@@ -1,0 +1,38 @@
+.inputs {
+  width: 320px;
+  text-align: right;
+  padding: 0 20px;
+}
+
+.old {
+  height: 25px;
+  font-size: 12px;
+}
+.new {
+  height: 40px;
+  font-size: 24px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  grid-template-rows: repeat(5, 80px);
+
+  &__btn {
+    color: white;
+    font-size: 24px;
+    background-color: rgb(45, 45, 45);
+    cursor: pointer;
+    &-red {
+      color: white;
+      font-size: 24px;
+      background-color: rgb(194, 57, 70);
+      cursor: pointer;
+    }
+    &-yellow {
+      color: white;
+      font-size: 24px;
+      background-color: rgb(241, 142, 64);
+      cursor: pointer;
+    }
+  }
+}
