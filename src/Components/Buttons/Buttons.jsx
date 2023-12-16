@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './buttons.scss';
 const Buttons = () => {
   const [visibleValue, setVisibleValue] = useState('');
@@ -6,6 +6,8 @@ const Buttons = () => {
   const [res2, setRes2] = useState('');
   const [action, setAction] = useState('');
   const [finish, setFinish] = useState(false);
+  const [point, setPoint] = useState(false);
+  const [oldValue, setOldValue] = useState('');
 
   const numberValue = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
   const actionValue = ['+', 'x', '-', '/', '%'];
@@ -150,10 +152,14 @@ const Buttons = () => {
     setVisibleValue(action);
   }, [action]);
 
+  useEffect(() => {
+    setOldValue(`${res1} ${action} ${res2}`);
+  }, [res1, action, res2]);
+
   return (
     <>
-      {/* <input className="inputs old" type="text" value="oldres" /> */}
-      <input className="inputs new" type="text" defaultValue={visibleValue} placeholder="0" />
+      <div className="inputs old"> {oldValue} </div>
+      <div className="inputs new">{res1 ? visibleValue : 0}</div>
       <div className="wrapper" onClick={(e) => getChangeValue(e)}>
         <button className="wrapper__btn" onClick={clearAll}>
           C
@@ -162,22 +168,22 @@ const Buttons = () => {
           +-
         </button>
         <button className="wrapper__btn">%</button>
-        <button className="wrapper__btn-red">/</button>
+        <button className="wrapper__btn wrapper__btn-red">/</button>
         <button className="wrapper__btn">7</button>
         <button className="wrapper__btn">8</button>
         <button className="wrapper__btn">9</button>
-        <button className="wrapper__btn-red">x</button>
+        <button className="wrapper__btn wrapper__btn-red">x</button>
         <button className="wrapper__btn">4</button>
         <button className="wrapper__btn">5</button>
         <button className="wrapper__btn">6</button>
-        <button className="wrapper__btn-red">-</button>
+        <button className="wrapper__btn wrapper__btn-red">-</button>
         <button className="wrapper__btn">1</button>
         <button className="wrapper__btn">2</button>
         <button className="wrapper__btn">3</button>
-        <button className="wrapper__btn-red">+</button>
+        <button className="wrapper__btn wrapper__btn-red">+</button>
         <button className="wrapper__btn">0</button>
         <button className="wrapper__btn">.</button>
-        <button className="wrapper__btn-yellow">=</button>
+        <button className="wrapper__btn wrapper__btn-yellow">=</button>
       </div>
     </>
   );

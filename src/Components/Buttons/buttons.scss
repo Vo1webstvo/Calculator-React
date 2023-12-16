@@ -1,5 +1,5 @@
 .inputs {
-  width: 320px;
+  width: 370px;
   text-align: right;
   padding: 0 20px;
 }
@@ -7,32 +7,38 @@
 .old {
   height: 25px;
   font-size: 12px;
+  color: white;
+  margin-top: 10px;
 }
 .new {
-  height: 40px;
-  font-size: 24px;
+  height: 60px;
+  font-size: 44px;
+  color: white;
 }
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 80px);
   grid-template-rows: repeat(5, 80px);
+  gap: 10px;
+  padding: 10px;
 
   &__btn {
     color: white;
     font-size: 24px;
-    background-color: rgb(45, 45, 45);
+    background-color: #333;
+    border-radius: 50%;
+    border-style: none;
+    grid-column: span 1;
     cursor: pointer;
+    &:hover {
+      background-color: orange;
+    }
     &-red {
-      color: white;
-      font-size: 24px;
       background-color: rgb(194, 57, 70);
-      cursor: pointer;
     }
     &-yellow {
-      color: white;
-      font-size: 24px;
       background-color: rgb(241, 142, 64);
-      cursor: pointer;
+      grid-column: span 2;
     }
   }
 }
